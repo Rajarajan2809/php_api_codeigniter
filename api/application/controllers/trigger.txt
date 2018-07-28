@@ -1,0 +1,97 @@
+table data:
+//Triggers
+CREATE TABLE `Triggers` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trigger_id` varchar(45) NOT NULL,
+  `trigger_name` varchar(85) NOT NULL,
+  `action_id` varchar(45) NOT NULL,
+  `trigger_type_id` int(4) NOT NULL,
+  `device_id` int(5) NOT NULL,
+  `end_point` int(3) NOT NULL,
+  `class_key` varchar(4) NOT NULL,
+  `command_key` varchar(4) NOT NULL,
+  `device_status` varchar(45) NOT NULL,
+  `execution_time` time NOT NULL DEFAULT '00:00:00',
+  `start_time` time NOT NULL DEFAULT '00:00:00',
+  `end_time` time NOT NULL DEFAULT '00:00:00',
+  `sunrise_time` time NOT NULL DEFAULT '00:00:00',
+  `sunset_time` time NOT NULL DEFAULT '00:00:00',
+  PRIMARY KEY (`id`,`trigger_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=latin1;
+
+
+//Triggers(mysql)
+CREATE TRIGGER trigger_action
+  BEFORE INSERT ON Triggers 
+  FOR EACH ROW
+  SET new.trigger_id = uuid(),new.action_id = uuid_short();
+
+//Trigger_Actions
+CREATE TABLE `Trigger_Actions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trigger_id` varchar(45) NOT NULL,
+  `action_id` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`,`action_id`),
+  KEY `fk_Trigger_Actions_1_idx` (`trigger_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+//action_trigger
+CREATE TRIGGER action_trigger
+BEFORE INSERT ON Trigger_Actions 
+FOR EACH ROW
+SET new.action_id = uuid();
+
+//Trigger_security_modes
+CREATE TABLE `Trigger_Security_Modes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `trigger_id` varchar(45) NOT NULL,
+  `security_modes` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+//Trigger_types static TABLE
+CREATE TABLE `Trigger_Types` (
+  `type_id` int(11) NOT NULL AUTO_INCREMENT,
+  `type_name` varchar(45) NOT NULL,
+  `is_active` tinyint(1) NOT NULL,
+  PRIMARY KEY (`type_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+//Action_details
+CREATE TABLE `Action_Detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action_id` varchar(45) NOT NULL,
+  `device_id` int(5) NOT NULL,
+  `end_point` int(3) NOT NULL,
+  `class_key` varchar(4) NOT NULL,
+  `command_key` varchar(4) NOT NULL,
+  `device_status` varchar(45) NOT NULL,
+  `execution_order` int(4) NOT NULL,
+  `execution_delay` int(4) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+//Action_notifications
+CREATE TABLE `Action_Notifications` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action_id` varchar(45) NOT NULL,
+  `notification_type` varchar(45) NOT NULL,
+  `recipient` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+//scene
+CREATE TABLE `Scene` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scene_id` varchar(45) NOT NULL,
+  `scene_name` varchar(45) NOT NULL,
+  `action_id` varchar(45) NOT NULL,
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+//trigger
+CREATE TRIGGER scene_action
+BEFORE INSERT ON Scene 
+FOR EACH ROW
+SET new.scene_id = uuid_short(),new.action_id = uuid();

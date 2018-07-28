@@ -1,0 +1,3 @@
+0 0 * * * curl "localhost:8281/api/sun/time"
+@reboot /var/www/ntp.sh
+00 06 06 03 * curl -H "Content-Type: application/json" -X POST -d '{"scene_id":"453db3d1-2158-11e8-818b-b827eb40cc51"}' http://localhost:8281/api/scene/execute

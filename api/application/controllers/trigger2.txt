@@ -1,0 +1,621 @@
+//scene activate
+url:192.168.1.180:8281/api/trigger/activate
+type:POST
+content:
+{
+	"scene_id" : "218103850"
+}
+response:
+{
+    "scene_id":"218103850",
+    "response_text":"scene executed" //"response_text":"scene execution failed"
+}
+
+//trigger activate
+url:192.168.1.180:8281/api/trigger/activate
+type:POST
+content:
+{
+	"device_id" : "12",
+	"end_point" : "1",
+	"cmd_cls" : "0x01",
+	"cmd" : "0x20",
+	"cmd_val" : "255"
+}
+response:
+{
+    "trigger_id":"7a0882a0-d1f8-11e7-b243-b827eb40cc51",
+    "response_text":"trigger executed" //"response_text":"trigger execution failed"
+}
+
+//trigger/scene test
+url:192.168.1.180:8281/api/trigger/activate
+type:POST
+content:
+{
+	"action_id" : "234881026"
+}
+response:
+//trigger
+{
+    "trigger_id":"5d96638d-d1f8-11e7-b243-b827eb40cc51",
+    "response_text":"trigger executed"
+}
+//scene
+//trigger
+{
+    "scene_id":"5d96638d-d1f8-11e7-b243-b827eb40cc51",
+    "response_text":"scene executed"
+}
+
+//trigger create
+url:192.168.1.180:8281/api/trigger/create
+type:POST
+content:
+{
+	"name": "evening lights",
+    "type": "1",
+    "execution_time" : "00:00:00",
+    "start_time" : "00:00:00",
+    "end_time" : "00:00:00",
+    "sunrise_time" : "00:00:00",
+    "sunset_time" : "00:00:00",
+	"trigger_input": [{
+			"device_id":"12",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255"
+		}
+    ],
+    "parameters": 
+    [
+        {
+			"device_id":"2",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "1",
+            "execution_delay" : "0"
+		},
+		{
+			"device_id":"3",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "2",
+            "execution_delay" : "0"
+		},
+		{
+			"device_id":"4",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "3",
+            "execution_delay" : "0"
+		},
+        {
+			"device_id":"5",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "4",
+            "execution_delay" : "0"
+		},
+        {
+			"device_id":"6",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "5",
+            "execution_delay" : "0"
+		},
+        {
+			"device_id":"8",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "6",
+            "execution_delay" : "0"
+		},
+        {
+			"notification_type":"sms",
+            "recipient":"9994432322"
+        },
+        {
+			"notification_type":"mail",
+            "recipient":"abc@gmail.com"
+        },
+        {
+			"notification_type":"notification",
+            "recipient":"QWERTY163898"
+        }
+	]
+}
+
+response:
+//success
+{
+    "trigger_id": "3c8a9315-d20b-11e7-b243-b827eb40cc51",
+    "trigger_name": "evening lights",
+    "action_id" : "",
+    "response_text": "trigger created"
+}
+//failed
+{
+    "response_text": "scene/trigger creation failed"
+}
+
+//scene create
+url:192.168.1.180:8281/api/trigger/create
+type:POST
+content:
+{
+	"name": "evening lights",
+    "type": "6",
+    "execution_time" : "NA",
+    "start_time" : "NA",
+    "end_time" : "NA",
+    "sunrise_time" : "NA",
+    "sunset_time" : "NA",
+	"trigger_input": [{
+			"device_id":"12",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255"
+		}
+    ],
+    "parameters": 
+    [
+        {
+			"device_id":"2",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "1",
+            "execution_delay" : "0"
+		},
+		{
+			"device_id":"3",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "2",
+            "execution_delay" : "0"
+		},
+		{
+			"device_id":"4",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "3",
+            "execution_delay" : "0"
+		},
+        {
+			"device_id":"5",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "4",
+            "execution_delay" : "0"
+		},
+        {
+			"device_id":"6",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "5",
+            "execution_delay" : "0"
+		},
+        {
+			"device_id":"8",
+            "end_point":"1",
+            "cmd_cls":"1",
+            "cmd":"20",
+            "cmd_val":"255",
+            "execution_order" : "6",
+            "execution_delay" : "0"
+		},
+        {
+			"notification_type":"sms",
+            "recipient":"9994432322"
+        },
+        {
+			"notification_type":"mail",
+            "recipient":"abc@gmail.com"
+        },
+        {
+			"notification_type":"notification",
+            "recipient":"QWERTY163898"
+        }
+	]
+}
+
+response:
+//success
+{
+    "scene_id": "3c8a9315-d20b-11e7-b243-b827eb40cc51",
+    "scene_name": "evening lights",
+    "response_text": "scene created"
+}
+//failed
+{
+    "response_text": "scene/trigger creation failed"
+}
+
+//list for scene
+url:192.168.1.180:8281/api/trigger/list
+type:post
+content:
+//to get particular scene
+{
+	"type": "scene",
+	"scene_id" : "234881050"
+}
+
+response:
+[
+    {
+        "scene_id": "234881050",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": [
+            {
+                "notification_type": "sms",
+                "recipient": "9994432322"
+            },
+            {
+                "notification_type": "mail",
+                "recipient": "abc@gmail.com"
+            },
+            {
+                "notification_type": "notification",
+                "recipient": "QWERTY163898"
+            }
+        ]
+    }
+]
+
+content:
+//to get all scene
+{
+	"type": "scene"
+}
+response:
+[
+    {
+        "scene_id": "234881029",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": []
+    },
+    {
+        "scene_id": "234881030",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": []
+    },
+    {
+        "scene_id": "234881031",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": []
+    },
+    {
+        "scene_id": "234881032",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": []
+    },
+    {
+        "scene_id": "234881033",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": []
+    },
+    {
+        "scene_id": "234881048",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": [
+            {
+                "notification_type": "sms",
+                "recipient": "9994432322"
+            },
+            {
+                "notification_type": "mail",
+                "recipient": "abc@gmail.com"
+            },
+            {
+                "notification_type": "notification",
+                "recipient": "QWERTY163898"
+            }
+        ]
+    },
+    {
+        "scene_id": "234881049",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": [
+            {
+                "notification_type": "sms",
+                "recipient": "9994432322"
+            },
+            {
+                "notification_type": "mail",
+                "recipient": "abc@gmail.com"
+            },
+            {
+                "notification_type": "notification",
+                "recipient": "QWERTY163898"
+            }
+        ]
+    },
+    {
+        "scene_id": "234881050",
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": [
+            {
+                "notification_type": "sms",
+                "recipient": "9994432322"
+            },
+            {
+                "notification_type": "mail",
+                "recipient": "abc@gmail.com"
+            },
+            {
+                "notification_type": "notification",
+                "recipient": "QWERTY163898"
+            }
+        ]
+    }
+]
+
+//list for trigger
+url:192.168.1.180:8281/api/trigger/list
+type:post
+content:
+//to get all scene
+{
+	"type": "trigger"
+}
+response:
+[
+    {
+        "trigger_name": "evening lights",
+        "trigger_type": "8bc38a94-d41b-11e7-b243-b827eb40cc51",
+        "execution_time": "00:00:00",
+        "start_time": "00:00:00",
+        "end_time": "00:00:00",
+        "sunrise_time": "00:00:00",
+        "sunset_time": "00:00:00",
+        "trigger_input": {
+            "device_id": "12",
+            "end_point": "1",
+            "cmd_cls": "1",
+            "cmd": "20",
+            "cmd_val": "255"
+        },
+        "device_parameters": [
+            {
+                "device_id": "5",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "1",
+                "device_status": "255",
+                "execution_delay": "0"
+            },
+            {
+                "device_id": "6",
+                "end_point": "1",
+                "class_key": "1",
+                "command_key": "20",
+                "class_version": "3",
+                "device_status": "255",
+                "execution_delay": "0"
+            }
+        ],
+        "notification_parameters": [
+            {
+                "notification_type": "sms",
+                "recipient": "9994432322"
+            },
+            {
+                "notification_type": "mail",
+                "recipient": "abc@gmail.com"
+            },
+            {
+                "notification_type": "notification",
+                "recipient": "QWERTY163898"
+            }
+        ]
+    }
+]
+
+//delete for scene
+url:192.168.1.180:8281/api/trigger/list
+type:post
+content:
+//to get particular scene
+{
+	"type": "scene",
+	"scene_id" : "234881050"
+}
+
+response:
